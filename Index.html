@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumaiya 💗</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    font-family:Arial,Helvetica,sans-serif;
+
+    background-color:#ffb6d9;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.55) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.55) 1px,transparent 1px),
+        linear-gradient(135deg,#ffb6d9,#ff82bb,#ffd9e9);
+
+    background-size:35px 35px,35px 35px,100% 100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* =========================
+   BACKGROUND PARTICLES
+========================= */
+
+.particle{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.75);
+    pointer-events:none;
+    animation:floatParticle linear infinite;
+}
+
+@keyframes floatParticle{
+    0%{
+        transform:translateY(110vh) scale(.5);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-20vh) scale(1.2);
+        opacity:0;
+    }
+}
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.card{
+    width:min(430px,92%);
+    padding:28px 22px;
+
+    background:rgba(255,255,255,.92);
+
+    border:1px solid rgba(255,255,255,.8);
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:
+        0 25px 70px rgba(190,30,100,.28),
+        0 8px 25px rgba(0,0,0,.12);
+
+    position:relative;
+    z-index:10;
+
+    animation:cardIn .8s ease;
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.85);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   3D HEART SCENE
+========================= */
+
+.scene{
+    width:230px;
+    height:230px;
+
+    margin:0 auto 10px;
+
+    position:relative;
+
+    perspective:900px;
+
+    transform-style:preserve-3d;
+}
+
+/* glowing center */
+
+.glow{
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:rgba(255,20,147,.32);
+
+    filter:blur(30px);
+
+    animation:glow 2s ease-in-out infinite;
+}
+
+@keyframes glow{
+    0%,100%{
+        transform:translate(-50%,-50%) scale(.75);
+        opacity:.45;
+    }
+
+    50%{
+        transform:translate(-50%,-50%) scale(1.25);
+        opacity:.9;
+    }
+}
+
+/* orbit rings */
+
+.ring{
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    left:5px;
+    top:5px;
+
+    border:2px solid rgba(255,255,255,.9);
+
+    border-radius:50%;
+
+    transform-style:preserve-3d;
+
+    animation:spin 7s linear infinite;
+}
+
+.ring:nth-child(2){
+    transform:rotateX(65deg);
+    animation-duration:9s;
+}
+
+.ring:nth-child(3){
+    transform:rotateY(65deg);
+    animation-duration:11s;
+}
+
+@keyframes spin{
+    from{
+        transform:rotateZ(0deg) rotateX(65deg);
+    }
+
+    to{
+        transform:rotateZ(360deg) rotateX(65deg);
+    }
+}
+
+/* =========================
+   HEART
+========================= */
+
+.heart{
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    left:50%;
+    top:50%;
+
+    background:#ff1685;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-45deg);
+
+    border-radius:8px;
+
+    box-shadow:
+        0 15px 30px rgba(190,0,90,.4);
+
+    animation:heartFloat 2.5s ease-in-out infinite;
+
+    z-index:5;
+}
+
+.heart::before,
+.heart::after{
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    background:#ff1685;
+
+    border-radius:50%;
+}
+
+.heart::before{
+    top:-35px;
+    left:0;
+}
+
+.heart::after{
+    left:35px;
+    top:0;
+}
+
+@keyframes heartFloat{
+    0%,100%{
+        transform:
+            translate(-50%,-50%)
+            rotate(-45deg)
+            scale(1);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-58%)
+            rotate(-45deg)
+            scale(1.12);
+    }
+}
+
+/* =========================
+   QUESTION
+========================= */
+
+.question{
+    font-size:clamp(28px,8vw,42px);
+
+    font-weight:800;
+
+    color:#e91e73;
+
+    margin:5px 0 25px;
+
+    line-height:1.2;
+}
+
+/* SUMAIYA */
+
+.sumaiya{
+    display:inline-block;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #c2185b,
+            #ff1493,
+            #9c27b0,
+            #ff1493,
+            #c2185b
+        );
+
+    background-size:300% 100%;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:
+        namePulse 2.5s ease-in-out infinite,
+        nameShine 4s linear infinite;
+}
+
+@keyframes namePulse{
+    0%,100%{
+        transform:scale(1);
+
+        filter:
+            drop-shadow(
+                0 0 2px rgba(255,20,147,.2)
+            );
+    }
+
+    50%{
+        transform:scale(1.08);
+
+        filter:
+            drop-shadow(
+                0 0 12px rgba(255,20,147,.7)
+            );
+    }
+}
+
+@keyframes nameShine{
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+
+    min-height:60px;
+}
+
+button{
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:999px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    font-family:inherit;
+}
+
+#yes{
+    background:#e91e73;
+    color:white;
+
+    box-shadow:
+        0 8px 22px rgba(233,30,115,.4);
+
+    transition:.2s;
+}
+
+#yes:hover{
+    transform:scale(1.08);
+
+    box-shadow:
+        0 12px 30px rgba(233,30,115,.55);
+}
+
+/* NO */
+
+#no{
+    background:white;
+
+    color:#e91e73;
+
+    border:2px solid #e91e73;
+
+    position:fixed;
+
+    z-index:99999;
+
+    transition:
+        left .22s ease,
+        top .22s ease,
+        transform .15s ease;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success{
+    display:none;
+
+    animation:successIn .7s ease;
+}
+
+@keyframes successIn{
+    from{
+        opacity:0;
+        transform:scale(.6);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.successEmoji{
+    font-size:70px;
+
+    animation:
+        emoji .9s ease-in-out infinite;
+}
+
+@keyframes emoji{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.2);
+    }
+}
+
+.success h2{
+    color:#e91e73;
+
+    font-size:30px;
+
+    margin:15px 0;
+}
+
+.success p{
+    color:#555;
+
+    font-size:18px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .card{
+        padding:20px 15px;
+    }
+
+    .scene{
+        width:200px;
+        height:200px;
+
+        transform:scale(.9);
+        margin-bottom:0;
+    }
+
+    .ring{
+        width:195px;
+        height:195px;
+    }
+
+    .question{
+        margin-top:5px;
+    }
+
+    button{
+        padding:13px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING PARTICLES -->
+
+<div class="particle"
+     style="left:8%;animation-duration:8s;"></div>
+
+<div class="particle"
+     style="left:25%;animation-duration:11s;animation-delay:2s;"></div>
+
+<div class="particle"
+     style="left:72%;animation-duration:9s;animation-delay:1s;"></div>
+
+<div class="particle"
+     style="left:90%;animation-duration:12s;animation-delay:3s;"></div>
+
+
+<!-- MAIN CARD -->
+
+<div class="card">
+
+    <!-- QUESTION -->
+
+    <div id="questionArea">
+
+        <!-- 3D HEART -->
+
+        <div class="scene">
+
+            <div class="glow"></div>
+
+            <div class="ring"></div>
+
+            <div class="ring"></div>
+
+            <div class="ring"></div>
+
+            <div class="heart"></div>
+
+        </div>
+
+
+        <!-- QUESTION -->
+
+        <div class="question">
+
+            <span class="sumaiya">
+                sumaiya
+            </span>
+
+            tui ki pagol? 😹
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+            <button id="yes">
+                Yes 😎
+            </button>
+
+            <button id="no">
+                No 🙃
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUCCESS -->
+
+    <div class="success" id="success">
+
+        <div class="successEmoji">
+            😂
+        </div>
+
+        <h2>
+            HAHA! I KNEW IT! 😹
+        </h2>
+
+        <p>
+            Tui je pagol, eta confirm! 🤣
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   NO BUTTON
+========================= */
+
+const no = document.getElementById("no");
+
+const yes = document.getElementById("yes");
+
+const questionArea =
+    document.getElementById("questionArea");
+
+const success =
+    document.getElementById("success");
+
+
+function moveNo(){
+
+    const padding = 15;
+
+    const w = no.offsetWidth;
+
+    const h = no.offsetHeight;
+
+    const maxX =
+        window.innerWidth - w - padding;
+
+    const maxY =
+        window.innerHeight - h - padding;
+
+    const x =
+        padding +
+        Math.random() *
+        Math.max(1,maxX-padding);
+
+    const y =
+        padding +
+        Math.random() *
+        Math.max(1,maxY-padding);
+
+    no.style.left = x + "px";
+
+    no.style.top = y + "px";
+
+    const rotation =
+        Math.random() * 20 - 10;
+
+    no.style.transform =
+        "rotate(" + rotation + "deg)";
+}
+
+
+/* Desktop */
+
+no.addEventListener(
+    "mouseenter",
+    moveNo
+);
+
+
+/* Mobile */
+
+no.addEventListener(
+    "pointerdown",
+    function(event){
+
+        event.preventDefault();
+
+        moveNo();
+    }
+);
+
+
+no.addEventListener(
+    "click",
+    function(event){
+
+        event.preventDefault();
+
+        moveNo();
+    }
+);
+
+
+/* =========================
+   YES BUTTON
+========================= */
+
+yes.addEventListener(
+    "click",
+    function(){
+
+        questionArea.style.display =
+            "none";
+
+        no.style.display =
+            "none";
+
+        success.style.display =
+            "block";
+
+        confetti();
+    }
+);
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function confetti(){
+
+    for(let i=0;i<70;i++){
+
+        const piece =
+            document.createElement("div");
+
+        piece.style.position =
+            "fixed";
+
+        piece.style.width =
+            "8px";
+
+        piece.style.height =
+            "8px";
+
+        piece.style.borderRadius =
+            "3px";
+
+        piece.style.background =
+            [
+                "#e91e73",
+                "#ff1493",
+                "#ff80ab",
+                "#ffffff",
+                "#9c27b0"
+            ][
+                Math.floor(
+                    Math.random()*5
+                )
+            ];
+
+        piece.style.left =
+            Math.random()*100+"vw";
+
+        piece.style.top =
+            "-10px";
+
+        piece.style.zIndex =
+            "999999";
+
+        document.body.appendChild(piece);
+
+        const duration =
+            1500 +
+            Math.random()*2000;
+
+        piece.animate(
+
+            [
+                {
+                    transform:
+                        "translateY(0) rotate(0deg)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        "translateY(110vh) rotate(720deg)",
+                    opacity:0
+                }
+            ],
+
+            {
+                duration:duration,
+
+                easing:
+                    "cubic-bezier(.2,.8,.3,1)"
+            }
+        );
+
+        setTimeout(
+            () => piece.remove(),
+            duration
+        );
+    }
+}
+
+
+/* =========================
+   INITIAL NO POSITION
+========================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        const rect =
+            no.getBoundingClientRect();
+
+        no.style.left =
+            rect.left+"px";
+
+        no.style.top =
+            rect.top+"px";
+    }
+);
+
+</script>
+
+</body>
+  </html>
