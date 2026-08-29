@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.perspective-container {
+  perspective: 1400px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@keyframes float-3d {
+  0% {
+    transform: translate3d(0, 0px, 0) rotateX(0deg) rotateY(0deg);
+  }
+  25% {
+    transform: translate3d(10px, -18px, 20px) rotateX(8deg) rotateY(10deg);
+  }
+  50% {
+    transform: translate3d(-6px, -6px, -10px) rotateX(-6deg) rotateY(-8deg);
+  }
+  75% {
+    transform: translate3d(-14px, 12px, 15px) rotateX(6deg) rotateY(-12deg);
+  }
+  100% {
+    transform: translate3d(0, 0px, 0) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 8s ease-in-out infinite;
+}
+
+@keyframes spin-slow-3d {
+  from {
+    transform: rotateX(15deg) rotateY(0deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(15deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+.animate-spin-slow-3d {
+  animation: spin-slow-3d 14s linear infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 40px 5px rgba(168, 85, 247, 0.45), 0 0 100px 20px rgba(236, 72, 153, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 70px 15px rgba(236, 72, 153, 0.55), 0 0 140px 40px rgba(168, 85, 247, 0.35);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes wiggle-3d {
+  0%, 100% { transform: rotate3d(0, 1, 0.2, 0deg); }
+  20% { transform: rotate3d(0, 1, 0.2, -12deg); }
+  40% { transform: rotate3d(0, 1, 0.2, 10deg); }
+  60% { transform: rotate3d(0, 1, 0.2, -8deg); }
+  80% { transform: rotate3d(0, 1, 0.2, 6deg); }
+}
+
+.animate-wiggle-3d {
+  animation: wiggle-3d 0.6s ease-in-out;
+}
+
+@keyframes title-float {
+  0%, 100% { transform: translateY(0) rotateX(0deg); }
+  50% { transform: translateY(-10px) rotateX(4deg); }
+}
+
+.animate-title-float {
+  animation: title-float 5s ease-in-out infinite;
+}
+
+@keyframes grain-drift {
+  0% { transform: translate(0, 0) rotateZ(0deg); }
+  100% { transform: translate(-40px, 40px) rotateZ(360deg); }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3) translateZ(-200px); opacity: 0; }
+  60% { transform: scale(1.08) translateZ(20px); opacity: 1; }
+  100% { transform: scale(1) translateZ(0); opacity: 1; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
